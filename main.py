@@ -1,7 +1,6 @@
 import streamlit as st
-from api import get_movie_prediction  # tu función que consume la API
+from api import get_movie_prediction  
 
-# ---------------- HEADER ----------------
 st.markdown(
     """
     <div style="background-color:#4CAF50;padding:20px;border-radius:12px;box-shadow: 2px 2px 10px rgba(0,0,0,0.1);">
@@ -53,8 +52,7 @@ def make_prediction():
     else:
         st.warning("Debes ingresar ambos campos.")
 
-# ---------------- BOTONES ----------------
-st.write("")  # espacio
+st.write("")  
 col1, col2 = st.columns(2)
 
 with col1:
@@ -63,16 +61,16 @@ with col1:
 with col2:
     st.button("Limpiar", on_click=clear_all, key="clear_btn", help="Haz clic para limpiar los campos y la predicción")
 
-st.write("")  # espacio
+st.write("")  
 
-# ---------------- RESULTADO ----------------
+
 if st.session_state.prediction is not None:
     score = st.session_state.prediction
-    if score <= 5:
+    if score <= 1:
         icon = "❌"  # tach
         color = "#f44336"  # rojo
         bg_color = "#ffe6e6"
-    elif 5 < score <= 7:
+    elif 1 < score <= 3:
         icon = "✅"  # paloma
         color = "#4CAF50"  # verde
         bg_color = "#e6ffe6"
@@ -91,9 +89,9 @@ if st.session_state.prediction is not None:
         unsafe_allow_html=True
     )
 
-st.write("")  # espacio
+st.write("")  
 
-# ---------------- FOOTER ----------------
+
 st.markdown(
     """
     <hr>
